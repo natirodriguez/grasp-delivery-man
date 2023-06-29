@@ -1,13 +1,13 @@
 import random
 #pip install matplotlib
 class GreedyRandom:
-    def __init__(self, grafo):
+    def __init__(self, grafo, porcentajeRandomizado):
         self.grafo = grafo
-        self.VALOR_MAXIMO = 99999; 
+        self.VALOR_MAXIMO = 99999
+        self.porcentajeRandomizado = porcentajeRandomizado
     
     def repartidorRandom(self): 
         longGrafo = len(self.grafo)
-        nodosARandomizar = longGrafo // 2
         scoreCamino = 0
 
         nodoRandom = random.choice(range(0, longGrafo)) #el ultimo no cuenta
@@ -49,8 +49,11 @@ class GreedyRandom:
 
         #de los nodos no visitados los ordeno 
         diccionarioOrdenado= sorted(dictionary.items(), key=lambda x:x[1])
-        #y me quedo con el 10% de los mismos
-        primerosDosElementosDiccionario = diccionarioOrdenado[:2] #TODO
+        #y me quedo con el porcentaje randomizado de los mismos
+        nodosARandomizar = round((longGrafo * self.porcentajeRandomizado) / 100)
+        #f nodosARandomizar <= 0: 
+        #    nodosARandomizar = 1
+        primerosDosElementosDiccionario = diccionarioOrdenado[:nodosARandomizar]
 
         converted_dict = dict(primerosDosElementosDiccionario)
 
