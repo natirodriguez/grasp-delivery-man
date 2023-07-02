@@ -35,3 +35,17 @@ Score: 1; 2 grafo: 30x30; bus local: 10
 ![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/c2c535a3-20c6-44ef-af40-b58573d4d4a3)
 
 
+## Variación limite del bus local
+Parametro usado para poner un corte en caso de que se encuentre siempre una mejor solución. Con la variación de este parametro pude observar como se incrementaban las cantidad de secuencias (solución ID), al variar se puede encontrar varias veces un nodo minimo y se estaría agregando al grafico, aunque puede observarse que también se estaría agregando varias secuencias, aunque la diferencia entre una y otra sea infima. 
+
+Score: 1, Bus Local: 15; 1 grafo:10x10
+![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/85172369-5295-476d-8997-bb5f9ae6203d)
+
+Score: 1, Bus Local: 50; 2 grafos:30x30
+![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/d9dffbf5-d6e0-411c-a4c1-ec6052d87147)
+
+Score: 1, Bus Local: 10; 2 grafos:30x30
+![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/695ddd36-3a05-49ff-b8b5-a5f8fe6edcf7)
+
+
+
