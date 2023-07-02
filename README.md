@@ -1,4 +1,4 @@
-# GRASP
+![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/b8303be2-c2c6-485c-b955-6f6be0b722f2)# GRASP
 Implementación de un repartidor de items, se necesita calcular la mejor distancia para entregar todos los items sin tener que pasar dos veces por el mismo camino. 
 Se empieza de un item, y se debe de terminar en el mismo item. 
 Se tomo como condición que el grafo es completo.
@@ -48,4 +48,12 @@ Score: 1, Bus Local: 10; 2 grafos:30x30
 ![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/695ddd36-3a05-49ff-b8b5-a5f8fe6edcf7)
 
 
+## Variación repetición de vecindad
+Este parametro fue agregado para saber a partir del arbol greedy randomizado, cuantas veces se va a ir repitiendo y buscando por cada vecino o posible solucion swapeada. Este cambio hace que se tarde más o menos tiempo en procesar toda la información, ya que cuanto más alto sea este parametro más tiempo tardará en compilar. Mientras probaba este, había probado con un número superior a 300 y en 1 minuto de compilación, todavía seguia ejecutandose el programa.
+
+2 grafos:30x30; vecindad:100 
+![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/2e6934f7-cec8-4a6d-bac7-3010f52a19dc)
+
+2 grafos:30x30; vecindad:30 
+![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/7f20d01b-2278-4827-aa48-14ee00f123ad)
 
