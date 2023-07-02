@@ -1,4 +1,4 @@
-![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/b8303be2-c2c6-485c-b955-6f6be0b722f2)# GRASP
+# GRASP
 Implementación de un repartidor de items, se necesita calcular la mejor distancia para entregar todos los items sin tener que pasar dos veces por el mismo camino. 
 Se empieza de un item, y se debe de terminar en el mismo item. 
 Se tomo como condición que el grafo es completo.
