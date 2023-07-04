@@ -49,7 +49,7 @@ Score: 1, Bus Local: 10; 2 grafos:30x30
 
 
 ## Variación repetición de vecindad
-Este parametro fue agregado para saber a partir del arbol greedy randomizado, cuantas veces se va a ir repitiendo y buscando por cada vecino o posible solucion swapeada. Este cambio hace que se tarde más o menos tiempo en procesar toda la información, ya que cuanto más alto sea este parametro más tiempo tardará en compilar. Mientras probaba este, había probado con un número superior a 300 y en 1 minuto de compilación, todavía seguia ejecutandose el programa.
+Este parametro fue agregado para saber a partir del arbol greedy randomizado, cuantas veces se va a ir repitiendo y buscando por cada vecino o posible solucion swapeada. Este cambio hace que se tarde más o menos tiempo en procesar toda la información, ya que cuanto más alto sea este parametro más tiempo tardará en compilar. 
 
 2 grafos:30x30; vecindad:100 
 ![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/2e6934f7-cec8-4a6d-bac7-3010f52a19dc)
