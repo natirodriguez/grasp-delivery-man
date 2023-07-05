@@ -1,4 +1,4 @@
-<img width="467" alt="image" src="https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/038094ca-690e-40b1-8921-9fea3784151b"># GRASP
+# GRASP
 Implementación de un repartidor de items, se necesita calcular la mejor distancia para entregar todos los items sin tener que pasar dos veces por el mismo camino. 
 Se empieza de un item, y se debe de terminar en el mismo item. 
 Se tomo como condición que el grafo es completo.
@@ -18,46 +18,46 @@ El archivo "Main.py" va a tener la ejecución tanto del grasp como la de greedy/
 
 ## Variación veces permitidas por un score 
 Parametro usado para no seguir buscando scores en caso de no encontrar mejorias, es decir que le pongo un corte a la cantidad de veces que puede estar revisando una secuencia sin cambio alguno con la anterior. Como se pueden observar en los graficos posteriores, se puede observar para una misma linea como hay más de dos score para una misma solución. Pero al dejarselo para que encuentre uno solo, eso no sucede, y se ve como la linea va decreciendo con distintas soluciones, y no hay más de un score para una misma solución.
-Como quise hacer una variación del parametro sin concentrarme en cuando se aplana, deje de graficar las sencuencias en las que el grafico se aplana con respecto a la secuencia anterior. 
 
 Score: 20; 1 grafo de 30 nodos; bus local: 10 
 ![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/be734e10-6f6a-4681-964f-0c52d2cf6be5)
+![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/e1d615e6-92de-408a-b81d-d27759e5b5ed)
 
-Score: 100; 2 grafo de 30 nodos; bus local: 10
-![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/2a890a49-bbb4-452f-96ca-92bc0a08b4e0)
+Score: 100; 2 ejecuciones del grasp con un grafo de 30 nodos; bus local: 10
+![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/b1dd9e88-3953-4cf5-9422-066fcbceea88)
 
-Score: 10; 2 grafo de 30 nodos; bus local: 10
-![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/aaf88b89-7f62-4e04-bdad-5047d1a0fe8b)
+Score: 10; 2 ejecuciones del grasp con un grafo de 30 nodos; bus local: 10
+![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/7de2c157-eb2f-4ae2-9d82-e93909082c1c)
 
-Score: 50; 2 grafo de 30 nodos; bus local: 10
-![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/13c94508-2fec-4eec-ab50-44119829af27)
+Score: 50; 1 ejecución del grasp con un grafo de 100 nodos; bus local: 10
+![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/c3dee6d7-ddac-42f6-bb76-d44293ddb5eb)
 
-Score: 1; 2 grafo de 30 nodos; bus local: 10
-![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/c2c535a3-20c6-44ef-af40-b58573d4d4a3)
+Score: 1; 1 ejecución del grasp con un grafo de 100 nodos; bus local: 10
+![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/ca2c99a2-c09a-4364-9e73-8f04e3698743)
+
 
 ## Variación limite del bus local
-Parametro usado para poner un corte en caso de que se encuentre siempre una mejor solución. Esto quiere decir que si por ejemplo para cada secuencia siempre se encuentra un costo minimo de cambio, en algun momento le diré al sistema que corte. Con la variación de este parametro pude observar como se incrementaban las cantidad de secuencias (solución ID), al variar se puede encontrar varias veces un nodo minimo y se estaría agregando al grafico, aunque puede observarse que también se estaría agregando varias secuencias, aunque la diferencia entre una y otra sea infima. 
-Como quise hacer una variación del parametro sin concentrarme en cuando se aplana, deje de graficar las sencuencias en las que el grafico se aplana con respecto a la secuencia anterior. 
+Parametro usado para poner un corte en caso de que se encuentre siempre una mejor solución. Esto quiere decir que si por ejemplo para cada secuencia siempre se encuentra un costo minimo de cambio, en algun momento le diré al sistema que corte.
 
-Score: 1, Bus Local: 15; 1 grafo de 10 nodos
-![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/85172369-5295-476d-8997-bb5f9ae6203d)
+Score: 1, Bus Local: 50; ejecución 2 veces del grasp de un grafo de 30 nodos
+![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/ca31e8bb-cdb8-41fc-8f11-5958ffddb4eb)
 
-Score: 1, Bus Local: 50; 2 grafo de 30 nodos
-![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/d9dffbf5-d6e0-411c-a4c1-ec6052d87147)
+Score: 1, Bus Local: 10; ejecución 2 veces del grasp de un grafo de 30 nodos
+![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/523951fd-7c9d-4c2c-b8a3-a81f2f939290)
 
-Score: 1, Bus Local: 10; 2 grafo de 30 nodos
-![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/695ddd36-3a05-49ff-b8b5-a5f8fe6edcf7)
+Score: 1, Bus Local: 50; ejecución 2 veces del grasp de un grafo de 100 nodos
+![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/69767926-733d-4c76-8c2e-c7510b4f0c53)
 
 
 ## Variación repetición de vecindad
-Para estos ejemplo se ejecuto 2 veces el grasp. Este parametro fue agregado para saber a partir del arbol greedy randomizado, cuantas veces se va a ir repitiendo y buscando por cada vecino o posible solucion swapeada. Este cambio hace que se tarde más o menos tiempo en procesar toda la información, ya que cuanto más alto sea este parametro más tiempo tardará en compilar. 
-Como quise hacer una variación del parametro sin concentrarme en cuando se aplana, deje de graficar las sencuencias en las que el grafico se aplana con respecto a la secuencia anterior. 
+Para estos ejemplo se ejecuto 3 veces el grasp. Este parametro fue agregado para saber a partir del arbol greedy randomizado, cuantas veces se va a ir repitiendo y buscando por cada vecino o posible solucion swapeada. Este cambio hace que se tarde más o menos tiempo en procesar toda la información, ya que cuanto más alto sea este parametro más tiempo tardará en compilar. Se puede ver que a partir de una secuencia relativamente baja, llega un momento que la solución se aplana totalmente, y no hay variación.
 
-Grafo de 30 nodos; vecindad:100 
-![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/2e6934f7-cec8-4a6d-bac7-3010f52a19dc)
+Grafo de 30 nodos; vecindad:50 
+![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/57fbd006-e627-4055-ab6c-7a4ce45f1c32)
 
-Grafo de 30 nodos; vecindad:30 
-![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/7f20d01b-2278-4827-aa48-14ee00f123ad)
+Grafo de 30 nodos; vecindad:15 
+![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/331ff3c3-9cf9-4e33-ada0-55e0eaebe71a)
+
 
 ## Aplanamiento GRASP - Variación corteGrasp
 Para esta parte la variación de los parametros anteriores no cambio, lo unico que fue cambiando fue el parametro corteGrasp, y la cantidad de nodos. 
