@@ -47,6 +47,10 @@ Score: 1, Bus Local: 10; ejecución 2 veces del grasp de un grafo de 30 nodos
 Score: 1, Bus Local: 50; ejecución 2 veces del grasp de un grafo de 100 nodos
 ![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/69767926-733d-4c76-8c2e-c7510b4f0c53)
 
+Esto es un ejemplo en lo que cada busqueda en la vecindad, se encuentra valores muy cercanos, al ponerle un corte evito que se siga buscando varias veces una mejora.
+Se puede apreciar mejor con lo que loguea la consola
+![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/3516e2c4-6b11-4747-a0a5-f8f6dc6e8b07)
+
 
 ## Variación repetición de vecindad
 Para estos ejemplo se ejecuto 3 veces el grasp. Este parametro fue agregado para saber a partir del arbol greedy randomizado, cuantas veces se va a ir repitiendo y buscando por cada vecino o posible solucion swapeada. Este cambio hace que se tarde más o menos tiempo en procesar toda la información, ya que cuanto más alto sea este parametro más tiempo tardará en compilar. Se puede ver que a partir de una secuencia relativamente baja, llega un momento que la solución se aplana totalmente, y no hay variación.
