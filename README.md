@@ -20,7 +20,6 @@ El archivo "Main.py" va a tener la ejecución tanto del grasp como la de greedy/
 Parametro usado para no seguir buscando scores en caso de no encontrar mejorias, es decir que le pongo un corte a la cantidad de veces que puede estar revisando una secuencia sin cambio alguno con la anterior. Como se pueden observar en los graficos posteriores, se puede observar para una misma linea como hay más de dos score para una misma solución. Pero al dejarselo para que encuentre uno solo, eso no sucede, y se ve como la linea va decreciendo con distintas soluciones, y no hay más de un score para una misma solución.
 
 Score: 20; 1 grafo de 30 nodos; bus local: 10 
-![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/be734e10-6f6a-4681-964f-0c52d2cf6be5)
 ![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/e1d615e6-92de-408a-b81d-d27759e5b5ed)
 
 Score: 100; 2 ejecuciones del grasp con un grafo de 30 nodos; bus local: 10
