@@ -2,6 +2,9 @@ from Grasp import Grasp
 from GreedyRandom import GreedyRandom
 from LocalSearch import LocalSearch
 from Plotter import Plotter 
+import Grafos30x30 
+import Grafos100nodos
+
 
 grafoEjemplo = [[-1, 10, 15, 20, 8], 
          [10, -1, 35, 25, 5], 
@@ -24,17 +27,18 @@ test_graph = [
 
 #Se comenta el greedy random y el local search ya que internamente el grasp llama n veces a esas dos clases
 #Para un solo elemento se puede coentar el grasp para que no corra tanto y ver el resultado particular de ambos
-
-greedyRandom = GreedyRandom(test_graph, 30) #agarro este porcentaje para que pueda traer mas de un elem random
+"""
+greedyRandom = GreedyRandom(Grafos200x200.grafo1, 10) #agarro este porcentaje para que pueda traer mas de un elem random
 caminoRandomizado, scoreCamino = greedyRandom.repartidorRandom()
 
-localSearch = LocalSearch(test_graph, caminoRandomizado, scoreCamino)
-mejorResultado, mejorScore, solucionesRegistradas = localSearch.findBest()
+localSearch = LocalSearch(Grafos200x200.grafo1, caminoRandomizado, scoreCamino, 5)
+mejorScore, secuencia = localSearch.findBest()
+"""
+
+#30
+
+grasp = Grasp(Grafos30x30.grafo30v1, 10)
+solucionesRegistradas = grasp.solucionGRASP()
 
 plotter = Plotter()
 plotter.solucion_plot(solucionesRegistradas)
-"""
-
-grasp = Grasp(grafoEjemplo, 30)
-grasp.solucionGRASP()
-"""

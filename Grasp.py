@@ -4,36 +4,34 @@ from LocalSearch import LocalSearch
 class Grasp:
     def __init__(self, matriz, porcentajeRandom):
         self.matriz = matriz
-        self.corteGrasp = 50 #da un corte en el grasp para que no se ejecute infinitas veces
         self.porcentajeRandom = porcentajeRandom
+        self.vecesRepetidasVecindad = 7
 
     def solucionGRASP(self):
         contador = 0
-        mejorScoreActual = 0
-        mejorCamino = None
-        solucionesRegistradas = []
+        scoreCamino = 0
+        corteGrasp = 100
+        caminoRandomizado = None
+        solucionesRegistradasGRASP = []
+        solucionesPlotter = []
 
-        while contador < self.corteGrasp:
+        for i in range(0,corteGrasp):
             print("--- GRASP ", contador, " ---")
+
+                #matriz del mismo len q antes pero de diferentes numeros. Los score son los de findbest
             greedyRandom = GreedyRandom(self.matriz, self.porcentajeRandom)
             caminoRandomizado, scoreCamino = greedyRandom.repartidorRandom()
 
-            localSearch = LocalSearch(self.matriz, caminoRandomizado, scoreCamino)
+            localSearch = LocalSearch(self.matriz, caminoRandomizado, scoreCamino, self.vecesRepetidasVecindad)
 
-            if (mejorCamino == None): # la primera vez que entra aqui
-                mejorCamino = caminoRandomizado
-                mejorScoreActual = scoreCamino
+            mejorScore, secuencia = localSearch.findBest()
+                
+            if (mejorScore < scoreCamino):
+                print("GRASP: ", contador, ", Score: ", scoreCamino, " -> ", mejorScore)
+                scoreCamino = mejorScore
             
-            nuevoCamino, scoreNuevaSolucion, solucionesRegistradas = localSearch.findBest()
-
-            if (mejorScoreActual < scoreNuevaSolucion):
-                print("GRASP: ", contador, ", Score: ", mejorScoreActual, " -> ", scoreNuevaSolucion)
-                mejorScoreActual = scoreNuevaSolucion
-                mejorCamino = nuevoCamino
-
+            solucionesRegistradasGRASP.append([contador, secuencia])
+                    
             contador += 1
-        
-        print("Solucion definitiva: ", mejorCamino)
-        print("Score : ", mejorScoreActual)
 
-        return mejorCamino 
+        return solucionesRegistradasGRASP

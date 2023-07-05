@@ -3,15 +3,17 @@ import matplotlib.pyplot as plt
 
 class Plotter:
     def solucion_plot(self, soluciones):
-        
-        for s in soluciones:
-            solucion_id = str(soluciones.index(s) + 1)
+        for sols in soluciones:
+            indice = soluciones.index(sols)
+            solucion_id = str(indice + 1)
             xs = []
             ys = []
-       
-            xs.append(solucion_id)
-            ys.append(s.score)
-            plt.plot(ys, xs, label="# linea " + solucion_id, marker='o')
+
+            for sol in sols[1]:
+                xs.append(sol.secuencia)
+                ys.append(sol.mejorScore)
+
+            plt.plot(xs, ys, label="line " + solucion_id, marker='o')
 
         plt.xlabel('Solucion ID')
         plt.ylabel('Score')
