@@ -2,23 +2,21 @@ from GreedyRandom import GreedyRandom
 from LocalSearch import LocalSearch
 
 class Grasp:
-    def __init__(self, matriz, porcentajeRandom):
+    def __init__(self, matriz, porcentajeRandom, vecindad, corteGrasp):
         self.matriz = matriz
         self.porcentajeRandom = porcentajeRandom
-        self.vecesRepetidasVecindad = 7
+        self.vecesRepetidasVecindad = vecindad 
+        self.corteGrasp = corteGrasp
 
     def solucionGRASP(self):
-        contador = 0
         scoreCamino = 0
-        corteGrasp = 100
         caminoRandomizado = None
         solucionesRegistradasGRASP = []
-        solucionesPlotter = []
 
-        for i in range(0,corteGrasp):
-            print("--- GRASP ", contador, " ---")
+        for i in range(0,self.corteGrasp):
+            print("--- GRASP ", i, " ---")
 
-                #matriz del mismo len q antes pero de diferentes numeros. Los score son los de findbest
+            #matriz del mismo len q antes pero de diferentes numeros. Los score son los de findbest
             greedyRandom = GreedyRandom(self.matriz, self.porcentajeRandom)
             caminoRandomizado, scoreCamino = greedyRandom.repartidorRandom()
 
@@ -27,11 +25,9 @@ class Grasp:
             mejorScore, secuencia = localSearch.findBest()
                 
             if (mejorScore < scoreCamino):
-                print("GRASP: ", contador, ", Score: ", scoreCamino, " -> ", mejorScore)
+                print("Score: ", scoreCamino, " -> ", mejorScore)
                 scoreCamino = mejorScore
             
-            solucionesRegistradasGRASP.append([contador, secuencia])
+            solucionesRegistradasGRASP.append([i, secuencia])
                     
-            contador += 1
-
         return solucionesRegistradasGRASP

@@ -33,11 +33,9 @@ caminoRandomizado, scoreCamino = greedyRandom.repartidorRandom()
 
 localSearch = LocalSearch(Grafos200x200.grafo1, caminoRandomizado, scoreCamino, 5)
 mejorScore, secuencia = localSearch.findBest()
+
 """
-
-#30
-
-grasp = Grasp(Grafos30x30.grafo30v1, 10)
+grasp = Grasp(Grafos100nodos.grafo1, 10, 10, 5)
 solucionesRegistradas = grasp.solucionGRASP()
 
 plotter = Plotter()

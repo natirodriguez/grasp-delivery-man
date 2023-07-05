@@ -4,7 +4,7 @@ class LocalSearch:
     def __init__(self, matriz, caminoGenerado, scoreGenerado, vecesRepeticionVecindad):
         self.matriz = matriz
         #Parametro usado para no seguir buscando scores en caso de no encontrar mejorias
-        self.vecesPermitidasUnScore = 20
+        self.vecesPermitidasUnScore = 1
 	    #Parametro usado para poner un corte en caso de que se encuentre siempre una mejor solucion
         self.limiteBusLocal = 10
         self.caminoGenerado = caminoGenerado
@@ -18,7 +18,7 @@ class LocalSearch:
         
         secuenciasScoresList = []
         secuenciasScoresList.append(SecuenciaScore(0, mejorScore)) #arbol greedy
-        print (0, mejorScore)
+
         for c in range(0,self.vecesRepeticionVecindad):
             contadorMejorScore = 0
             busLocal = 0
@@ -27,7 +27,7 @@ class LocalSearch:
                 secuenciasScoresList.append(SecuenciaScore(c+1, nuevoScore))
 
                 if nuevoScore < mejorScore: 
-                    print("Local search: ", busLocal, " Mejor Score: ", mejorScore, " Nuevo Score: ", nuevoScore)
+                    print("Local search: ", c, " Mejor Score: ", mejorScore, " Nuevo Score: ", nuevoScore)
                     mejorScore = nuevoScore
                     mejorCamino = nuevoCamino
                     contadorMejorScore += 1
@@ -37,14 +37,17 @@ class LocalSearch:
         return mejorScore, secuenciasScoresList
 
     def busquedaVecindad(self, mejorCamino, mejorScore):
-        mejorIndice = 0
-
+        mejorScoreAlMomento = 999999
+        mejorIndice = len(mejorCamino) + 1
         for c in range(len(mejorCamino)): 
             nuevoScore = self.moverAristaConScoreResultante(c, mejorCamino, mejorScore)
-            
-            if nuevoScore < mejorScore: 
+
+            if nuevoScore < mejorScoreAlMomento:
+                mejorScoreAlMomento = nuevoScore
                 mejorIndice = c
-                mejorScore = nuevoScore
+            
+        if mejorScoreAlMomento < mejorScore: 
+            mejorScore = mejorScoreAlMomento
 
         #Se copia la solucion, y actualizo las aristas gracias al mejor camino encontrado
         mejorVecindad = self.copiarMejorVencidad(mejorIndice, mejorCamino)
@@ -101,10 +104,9 @@ class LocalSearch:
         nuevoScore -= self.matriz[elementoCambiario[0]][elementoCambiario[1]]
         nuevoScore -= self.matriz[ultimoElemento[0]][ultimoElemento[1]]
 
-
         #Sumo al score los valores de los elementos cambiarios
         nuevoScore += self.matriz[primerElemento[0]][elementoCambiario[1]]
         nuevoScore += self.matriz[elementoCambiario[1]][elementoCambiario[0]]
         nuevoScore += self.matriz[elementoCambiario[0]][ultimoElemento[1]]
 
-        return nuevoScore 
+        return nuevoScore
