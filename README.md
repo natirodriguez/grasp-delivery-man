@@ -1,4 +1,4 @@
-# GRASP
+<img width="467" alt="image" src="https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/038094ca-690e-40b1-8921-9fea3784151b"># GRASP
 Implementación de un repartidor de items, se necesita calcular la mejor distancia para entregar todos los items sin tener que pasar dos veces por el mismo camino. 
 Se empieza de un item, y se debe de terminar en el mismo item. 
 Se tomo como condición que el grafo es completo.
@@ -68,14 +68,14 @@ Se repite 3 veces un grafo de 30 nodos
 ![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/40b7f4f5-af09-4f55-9c66-c87187f4a905)
 
 Se repite 5 veces un grafo de 100 nodos
-![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/bac5921f-2606-44f6-bb5f-aeb06a79e686)
-![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/8dde8754-4208-4e7e-aa43-4936cfebddc5)
+![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/7d6652e2-84af-4429-8769-a7f2d2c30637)
+![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/4fc218ef-e85a-4a0a-a29d-0d05e1d2bdfe)
 
 Se repite 10 veces un grafo de 100 nodos
-![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/f6b466d1-dcfe-41d5-a832-362da3f99a04)
+![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/2363e29b-0d60-4ac7-90a3-2753aa791cb3)
 
 Se repitio 100 veces un grafo de 100 nodos
-![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/e41dfbfe-9ea6-4d43-af6a-befe9b44f4b8)
+![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/2a2bcb23-0172-4c71-acf9-89fee333ab1a)
 
 ## Orden de complejidad
 ### GreedyRandom.py
