@@ -16,10 +16,13 @@ Se ejecuta varias veces la primera repartición y su consecuente busqueda local.
 Ejecución
 El archivo "Main.py" va a tener la ejecución tanto del grasp como la de greedy/busqueda local. 
 
-A continuación se va a estar mostrando la ejecución del GRASP, variando los parametros modificables tanto de LocalSearch como del GRASP; además de variar la cantidad de nodos de la matriz inicial.
+A continuación se va a estar mostrando la ejecución del GRASP, variando los parametros modificables tanto de LocalSearch como del GRASP; además de variar la cantidad de nodos de la matriz inicial. Como aclaración antes de empezar quiero hacer una aclaración con respecto a los nombres de las variables encontradas en el grafico:
+1. Line: hace referencia a la ejecución del GRASP que se esta ejecutando. Por cada GRASP ejecutado le corresponde una line.
+2. Solución Id: hace referencia a la iteración o número de secuencia
+3. Score: hace referencia al costo del circuito para esa secuencia. 
 
-## Variación veces permitidas por un score/mejora
-Score es un parametro usado en el LocalSearch para no seguir buscando mejoras en caso de no encontrarlas, es decir le estoy poniendo un corte a la cantidad de veces que puede estar revisando una secuencia sin cambio alguno de la anterior. Como se pueden observar en los graficos posteriores, se puede observar para una misma linea(Grasp) como hay más de dos mejoras para una misma secuencia. Pero al dejarselo para que encuentre uno solo, eso no sucede, y se ve como la linea va decreciendo con distintas soluciones, y no hay más de un score para una misma solución.
+## Variación veces permitidas por un score
+Score es un parametro usado en el LocalSearch para no seguir buscando soluciones en caso de no encontrarlas, es decir le estoy poniendo un corte a la cantidad de veces que puede estar revisando una secuencia sin un mejor cambio con respecto al anterior. Como se pueden observar en los graficos posteriores, se puede observar para una misma linea(Grasp) como hay más de una solución que mejoraria el score inicial para una sola secuencia; en los casos en que la linea se encuentra aplanada es porque la mejor solución que se pudo encontrar es por la que intenta comparar. Al dejarselo para que encuentre un solo score, no puede suceder el caso en el que se encuentra más de una solución que mejoraria el circuito inicial, ya que solo me estaría quedando con la primera.
 
 Score: 20; 1 grafo de 30 nodos; bus local: 10 
 ![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/e1d615e6-92de-408a-b81d-d27759e5b5ed)
@@ -54,7 +57,7 @@ En el siguiente ejemplo, del lado izquierdo de la pantalla, se puede observar co
 
 
 ## Variación repetición de vecindad
-Parametro usado en LocalSearch agregado para saber, a partir del circuito generado por el greedy randomizado, cuantas veces se va a ir repitiendo y buscando por cada vecino o posible solucion swapeada. Este cambio hace que se tarde más o menos tiempo en procesar toda la información, ya que cuanto más alto sea este parametro más tiempo tardará en compilar. Se puede ver que a partir de una secuencia relativamente baja, llega un momento que la solución se aplana totalmente, y no hay variación.
+Parametro usado en LocalSearch agregado para saber, a partir del circuito generado por el greedy randomizado, cuantas veces se va a ir repitiendo y buscando por cada vecino o posible solucion swapeada. Este cambio hace que se tarde más o menos tiempo en procesar toda la información, ya que cuanto más alto sea este parametro más tiempo tardará en compilar. Se puede ver que a partir de una secuencia relativamente baja, llega un momento que la solución se aplana totalmente, y no hay variación. En el desarrollo de la aplicación se puede ver esto como un parametro cambiante, pero más adelante en el informe, mostraré el porcentaje acorde a cuantas veces es necesario repetir la vecindad generalizado.
 
 Grafo de 30 nodos; vecindad:50 
 ![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/57fbd006-e627-4055-ab6c-7a4ce45f1c32)
@@ -80,6 +83,27 @@ Se repite 10 veces un grafo de 100 nodos
 
 Se repitio 20 veces un grafo de 100 nodos
 ![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/155d4c78-2579-4b45-8ba6-197eaeb2e9b5)
+
+##Conclusión final
+He probado correr varias veces el GRASP con diferente cantidad de nodos, y una vecindad acorde a todos, en el que me demuestre en que punto se aplano. Para esto la vecindad elegida para representar a todos, y ver en que punto se aplana es 50. Al correrlo varias veces, me quede con la peor secuencia que pude encontrar de cada uno.
+1. Grafo de 30 nodos, con una vecindad de 50. En la secuencia/iteración 8 se encuentra un aplanamiento de la curva
+2. Grafo de 100 nodos, con una vecindad de 50. En la secuencia/iteración 18 se encuentra un aplanamiento de la curva
+3. Grafo de 250 nodos, con una vecindad de 50. En la secuencia/iteración 31 se encuentra un aplanamiento de la curva
+
+Calculo que realizo = (cantidadNodos * porcentajeAdecuadoAOjo) / 100 = cerca de la peor iteración en la que se aplana los resultados.
+1. En el caso del grafo de 30 nodos, podemos observar que un 20% de la capacidad de nodos, correspondería al número que representeria la peor iteración en que la curva se aplasta.
+2. En el caso del grafo de 100 nodos, podemos observar que cerca de un 17/18% de la capacidad de nodos, se encuentra la peor iteración en que la curva se aplana.
+3. En el caso del grafo de 250 nodos, podemos observar que alrededor del 15% de la capacidad de nodos, se encuentra la peor iteración en que la curva se aplana.
+
+Entre estos nodos, haciendo un promedio y tratando de generalizarlo para otros nodos alrededor del 18% de la cantidad de nodos que tenga el grafo. Entre ese porcentaje se estaría más que nada cerca del indice de aplanamiento de la curva.
+
+Existe una tecnica matematica que resolveria este problema, llamada "Regresión Lineal" que te daría un porcentaje más exacto de esta estadistica.
+Comparto por pantalla, el ejemplo resultante de una regresión lineal online, en la que le ingrese los valores mencionados anteriormente:
+![image](https://github.com/natirodriguez/grasp-delivery-man/assets/1548366/0598b5e4-8e39-49ed-9943-9091f083530b)
+__El eje "x" se refiere a la iteración en la que se aplano la curva.__
+__El eje "y" se refiere a la cantidad de nodos.__
+Este resultado me estaría dejando que la media entre los valores pasados, es un 19%. Cercano al porcentaje que calcule.
+
 
 ## Orden de complejidad
 ### GreedyRandom.py
